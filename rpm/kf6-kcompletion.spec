@@ -1,3 +1,4 @@
+%global qt_version 6.8.3
 %global kf6_version 6.18.0
 
 Name:           kf6-kcompletion
@@ -14,10 +15,13 @@ BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  kf6-rpm-macros
-BuildRequires:  qt6-qtbase-devel >= %{kf6_version}
+BuildRequires:  qt6-qtbase-devel          >= %{qt_version}
+BuildRequires:  kf6-kconfig-devel         >= %{kf6_version}
+BuildRequires:  kf6-kwidgetsaddons-devel  >= %{kf6_version}
+BuildRequires:  kf6-kcodecs-devel         >= %{kf6_version}
+
 BuildRequires:  qt6-qttools-devel
-BuildRequires:  kf6-kwidgets-devel
-BuildRequires:  kf6-kconfig-devel 
+BuildRequires:  qt6-linguist
 
 %description
 KCompletion provides widgets with advanced completion support as well as a
