@@ -18,6 +18,7 @@ BuildRequires:  kf6-rpm-macros
 BuildRequires:  qt6-qtbase-devel >= %{qt_version}
 BuildRequires:  qt6-qttools-devel
 BuildRequires:  kf6-kconfig-devel  >= %{kf6_version}
+BuildRequires:  kf6-kcodecs-devel  >= %{kf6_version}
 
 %description
 KCompletion provides widgets with advanced completion support as well as a
