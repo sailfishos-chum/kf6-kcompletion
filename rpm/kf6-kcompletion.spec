@@ -4,26 +4,25 @@ Name:           kf6-kcompletion
 Version:        6.18.0
 Release:        1%{?dist}
 Summary:        KDE Frameworks 6 Tier 2 addon with auto completion widgets and classes
-
-License:        LGPLv2+
+# BSD-3-Clause is in the LICENSES folder but goes unused.
+License:        CC0-1.0 AND LGPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://invent.kde.org/frameworks/%{framework}
 Source0:        %{name}-%{version}.tar.bz2
 
-## upstream fixes
 
 BuildRequires:  kf6-extra-cmake-modules
-BuildRequires:  kf6-rpm-macros >= %{kf6_version}
-BuildRequires:  kf6-kconfig-devel 
-BuildRequires:  kf6-kwidgetsaddons-devel
-BuildRequires:  qt6-qtbase-devel
+BuildRequires:  gcc-c++
+BuildRequires:  cmake
+BuildRequires:  kf6-rpm-macros
+BuildRequires:  qt6-qtbase-devel >= %{kf6_version}
 BuildRequires:  qt6-qttools-devel
-
-%{?_qt6:Requires: %{_qt6}%{?_isa} = %{_qt6_version}}
-Requires: qt6-qtbase-gui
+BuildRequires:  kf6-kwidgets-devel
+BuildRequires:  kf6-kconfig-devel 
 
 %description
 KCompletion provides widgets with advanced completion support as well as a
 lower-level completion class which can be used with your own widgets.
+
 
 %package        devel
 Summary:        Development files for %{name}
@@ -37,10 +36,9 @@ developing applications that use %{name}.
 %autosetup -n %{name}-%{version}/upstream -p1
 
 %build
-export QTDIR=%{_qt6_prefix}
-touch .git
-
-%cmake_kf6
+%cmake_kf6 \
+  -DBUILD_DESIGNERPLUGIN:BOOL=OFF \
+  %{nil}
 %cmake_build
 
 %install
@@ -54,14 +52,12 @@ touch .git
 %files -f kcompletion6_qt.lang
 %doc README.md
 %license LICENSES/*.txt
-%{_kf6_datadir}/locale/
-%{_kf6_datadir}/qlogging-categories6/kcompletion.*
 %{_kf6_libdir}/libKF6Completion.so.*
-%{_kf6_qtplugindir}/designer/*5widgets.so
+%{_kf6_datadir}/qlogging-categories6/kcompletion.*
 
 %files devel
-%{_kf6_includedir}/KF6/KCompletion/
+%{_kf6_includedir}/KCompletion/
 %{_kf6_libdir}/libKF6Completion.so
 %{_kf6_libdir}/cmake/KF6Completion/
-%{_kf6_archdatadir}/mkspecs/modules/qt_KCompletion.pri
+#%%{_kf6_qtplugindir}/designer/kcompletion6widgets.so
 
