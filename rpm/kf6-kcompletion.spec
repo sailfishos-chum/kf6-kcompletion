@@ -20,6 +20,7 @@ BuildRequires:  kf6-kconfig-devel         >= %{kf6_version}
 BuildRequires:  kf6-kwidgetsaddons-devel  >= %{kf6_version}
 BuildRequires:  kf6-kcodecs-devel         >= %{kf6_version}
 
+BuildRequires:  qt6-qttools-devel
 BuildRequires:  qt6-linguist
 
 %description
