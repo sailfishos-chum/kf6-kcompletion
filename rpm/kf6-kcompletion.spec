@@ -1,8 +1,8 @@
 %global qt_version 6.8.3
-%global kf6_version 6.18.0
+%global kf6_version 6.28.0
 
 Name:           kf6-kcompletion
-Version:        6.18.0
+Version: 6.28.0
 Release:        1%{?dist}
 Summary:        KDE Frameworks 6 Tier 2 addon with auto completion widgets and classes
 # BSD-3-Clause is in the LICENSES folder but goes unused.
